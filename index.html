@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف روان واحمد الملكية</title>
+    <!-- Tailwind CSS for modern structure -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Amiri and elegant Arabic Display scripts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi:wght@400..700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library for Scroll Effects -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        /* Custom Premium Styles & Color Palette */
+        :root {
+            --color-cream-light: #FAF7F2;
+            --color-cream-dark: #F3ECE0;
+            --color-gold-light: #E6C687;
+            --color-gold-dark: #B89047;
+            --color-royal-dark: #1F1B15;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            background-color: var(--color-cream-light);
+            color: var(--color-royal-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .title-calligraphy {
+            font-family: 'Aref Ruqaa', serif;
+        }
+
+        .font-kufi {
+            font-family: 'Reem Kufi', sans-serif;
+        }
+
+        /* Gold Foil Glow Effects */
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #8A6421 0%, #D1B464 25%, #FDF1A9 50%, #D1B464 75%, #8A6421 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 4px rgba(184, 144, 71, 0.15);
+        }
+
+        .gold-border {
+            border-image: linear-gradient(to right, #8A6421, #FDF1A9, #8A6421) 1;
+        }
+
+        /* Envelope Royal Reveal CSS 3D */
+        #envelope-container {
+            perspective: 1500px;
+            z-index: 1000;
+        }
+
+        .envelope {
+            position: relative;
+            background: var(--color-cream-dark);
+            box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
+            transition: all 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+
+        .envelope.open {
+            transform: translateY(120%) scale(0.85);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: var(--color-cream-dark);
+            clip-path: polygon(0 0, 50% 60%, 100% 0);
+            transform-origin: top;
+            transition: transform 1s ease-in-out;
+            z-index: 3;
+            border-bottom: 2px solid rgba(184, 144, 71, 0.3);
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* Wax Seal Stamp Animation */
+        .wax-seal {
+            background: radial-gradient(circle, #b12c2c 0%, #700d0d 100%);
+            box-shadow: 0 4px 15px rgba(112, 13, 13, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            border: 4px double #e2b1b1;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .wax-seal:hover {
+            transform: translate(-50%, -50%) scale(1.15) rotate(15deg);
+        }
+
+        .wax-seal::after {
+            content: "ر & أ";
+            font-family: 'Aref Ruqaa', serif;
+            color: #f7d7d7;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        /* Interactive Music Player Disc styling */
+        .music-disc-active {
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating particles canvas */
+        #dustCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Custom scrollbar for royal theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-cream-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold-dark);
+            border-radius: 4px;
+        }
+
+        /* Pulsing Location Map Pin Effect */
+        .pulsing-pin {
+            animation: pulse-pin 2s infinite;
+        }
+
+        @keyframes pulse-pin {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 144, 71, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(184, 144, 71, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 144, 71, 0); }
+        }
+
+        /* Elegant Luxury Frame Border */
+        .royal-border-frame {
+            border: 15px solid transparent;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' fill='none' stroke='%23B89047' stroke-width='3'/%3E%3Cpath d='M10 10 L90 10 L90 90 L10 90 Z' fill='none' stroke='%23B89047' stroke-width='1'/%3E%3Ccircle cx='10' cy='10' r='5' fill='%23B89047'/%3E%3Ccircle cx='90' cy='10' r='5' fill='%23B89047'/%3E%3Ccircle cx='90' cy='90' r='5' fill='%23B89047'/%3E%3Ccircle cx='10' cy='90' r='5' fill='%23B89047'/%3E%3C/svg%3E") 30 stretch;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden Youtube Player for Audio integration -->
+    <div id="youtube-audio-player" class="hidden"></div>
+
+    <!-- Interactive Canvas Particle System -->
+    <canvas id="dustCanvas"></canvas>
+
+    <!-- Global Royal Notification System -->
+    <div id="custom-toast" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-[9999] opacity-0 pointer-events-none transition-all duration-500 bg-stone-900 border border-[#B89047] text-[#FAF7F2] py-3 px-6 rounded-full shadow-2xl flex items-center space-x-3 rtl:space-x-reverse">
+        <span id="toast-icon" class="text-[#E6C687]"><i class="fas fa-bell"></i></span>
+        <span id="toast-text" class="font-kufi text-sm font-medium"></span>
+    </div>
+
+    <!-- 1. THE OPENING GATE: LUXURIOUS WAX SEAL ENVELOPE -->
+    <div id="envelope-container" class="fixed inset-0 w-full h-full flex items-center justify-center bg-stone-950/95 z-[999]">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-stone-900 via-stone-950 to-black pointer-events-none"></div>
+        
+        <div class="envelope w-[92%] max-w-[500px] h-[350px] rounded-lg overflow-visible flex flex-col justify-end p-8 text-center relative border border-[#B89047]/20">
+            <!-- Envelope Flap -->
+            <div class="envelope-flap"></div>
+            
+            <!-- Floral / Damask Corner Ornaments Inside/Outside -->
+            <div class="absolute inset-4 border border-[#B89047]/30 rounded-md pointer-events-none flex items-center justify-center">
+                <div class="w-full h-full absolute flex justify-between p-2">
+                    <span class="text-[#B89047] text-xl opacity-60"><i class="fas fa-gopuram"></i></span>
+                    <span class="text-[#B89047] text-xl opacity-60 rotate-90"><i class="fas fa-gopuram"></i></span>
+                </div>
+            </div>
+
+            <!-- Envelope Content Hint -->
+            <div class="mb-16 z-10 relative">
+                <h3 class="text-xs uppercase tracking-[0.25em] text-[#E6C687] font-kufi mb-2">دعوة زفاف ملكية</h3>
+                <h1 class="title-calligraphy text-4xl text-[#FAF7F2] drop-shadow-md mb-2">روان & احمد</h1>
+                <p class="text-[#FAF7F2]/60 text-xs italic">انقر على الختم الشمعي لفتح بوابات الفخامة</p>
+            </div>
+
+            <!-- Wax Seal Button -->
+            <div onclick="openEnvelope()" class="wax-seal absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full z-20 flex items-center justify-center"></div>
+        </div>
+    </div>
+
+
+    <!-- MAIN WEBSITE LAYOUT (Initially hidden under the curtain) -->
+    <div id="main-content" class="hidden min-h-screen flex flex-col items-center relative pb-20">
+
+        <!-- Fixed Music Controller Widget -->
+        <div class="fixed bottom-6 right-6 z-50 flex flex-col items-center">
+            <button onclick="toggleMusic()" id="musicBtn" class="w-14 h-14 bg-stone-900 border-2 border-[#B89047] rounded-full flex items-center justify-center text-[#E6C687] shadow-xl hover:scale-110 transition duration-300 relative">
+                <div id="music-vinyl" class="absolute inset-1 rounded-full border border-[#B89047]/30 bg-stone-950 flex items-center justify-center">
+                    <i class="fas fa-music text-sm"></i>
+                </div>
+                <!-- Radial soundwave effect -->
+                <span class="absolute inline-flex h-full w-full rounded-full bg-[#B89047] opacity-20 animate-ping -z-10"></span>
+            </button>
+            <span class="text-[10px] font-kufi text-[#B89047] mt-1 bg-stone-900/80 px-2 py-0.5 rounded shadow">الموسيقى</span>
+        </div>
+
+        <!-- Premium Top Header bar -->
+        <header class="w-full max-w-5xl px-6 py-4 flex justify-between items-center border-b border-[#B89047]/20 z-20">
+            <div class="text-[#B89047] text-lg font-bold tracking-widest title-calligraphy">زفاف روان & احمد</div>
+            <nav class="hidden md:flex space-x-6 rtl:space-x-reverse font-kufi text-xs text-[#B89047] font-semibold">
+                <a href="#welcome-sec" class="hover:text-amber-800 transition">الترحيب</a>
+                <a href="#details-sec" class="hover:text-amber-800 transition">التفاصيل</a>
+                <a href="#map-sec" class="hover:text-amber-800 transition">الموقع</a>
+                <a href="#rsvp-sec" class="hover:text-amber-800 transition">تأكيد الحضور</a>
+            </nav>
+            <a href="#rsvp-sec" class="bg-gradient-to-r from-[#B89047] to-[#E6C687] text-stone-950 font-kufi text-[11px] font-bold py-2 px-5 rounded-full shadow-md hover:shadow-lg transition">تأكيد حضورك</a>
+        </header>
+
+        <!-- SECTION 1: WELCOME & HERO BANNER -->
+        <section id="welcome-sec" class="w-full max-w-4xl px-4 py-16 text-center flex flex-col items-center justify-center min-h-[85vh] relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(243,236,224,0.4)_0%,_transparent_70%)] pointer-events-none"></div>
+
+            <div class="royal-border-frame p-8 md:p-14 w-full max-w-2xl bg-[#FAF7F2]/80 backdrop-blur-sm shadow-xl rounded-lg" data-aos="fade-up">
+                <!-- Royal Monogram -->
+                <div class="w-16 h-16 border-2 border-[#B89047] rounded-full mx-auto flex items-center justify-center mb-6 relative">
+                    <div class="absolute -inset-1 border border-[#B89047]/30 rounded-full"></div>
+                    <span class="title-calligraphy text-2xl text-[#B89047]">روأ</span>
+                </div>
+
+                <!-- Invitation Script -->
+                <p class="text-stone-500 font-kufi text-xs uppercase tracking-widest mb-3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                <h4 class="text-stone-700 text-lg mb-8">يَسُرُّنا ويُسعدنا دعوتكم لحضور حفل زفاف بهجتنا وعريسنا وعروستنا الجميلين</h4>
+                
+                <!-- Couple Names (Thuluth Inspired Arabic Calligraphy Style) -->
+                <div class="my-6 py-4 border-t border-b border-[#B89047]/30 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
+                    <h1 class="title-calligraphy text-6xl md:text-7xl gold-text-gradient font-bold drop-shadow-sm px-4">روان</h1>
+                    <span class="text-stone-400 font-light text-2xl italic">&amp;</span>
+                    <h1 class="title-calligraphy text-6xl md:text-7xl gold-text-gradient font-bold drop-shadow-sm px-4">احمد</h1>
+                </div>
+
+                <p class="text-[#B89047] font-kufi text-base font-semibold tracking-wider mt-6">وليتكامل فرحنا، يسرنا حضوركم البهي ليلة العمر.</p>
+                
+                <!-- Down Arrow Indicator -->
+                <div class="mt-12 animate-bounce text-[#B89047]">
+                    <i class="fas fa-chevron-down text-lg"></i>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: ROYAL EVENT DETAILS & TIMER -->
+        <section id="details-sec" class="w-full max-w-5xl px-6 py-16 relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Content Column -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <span class="font-kufi text-[#B89047] text-xs uppercase tracking-widest block">موعد ومكان اللقاء الملكي</span>
+                    <h2 class="title-calligraphy text-4xl text-stone-900 leading-tight">حيث تبدأ القصة الخالدة</h2>
+                    <div class="h-1 w-24 bg-gradient-to-r from-[#B89047] to-[#E6C687]"></div>
+                    <p class="text-stone-600 text-lg leading-relaxed">
+                        ننسج من الغيم والياسمين حكاية ليلتنا الفاخرة، وندعوكم لتشهدوا على ميثاق الحب والوفاء بين قلبي "روان واحمد" في أجواء من الرقي والسرور البصري والموسيقي.
+                    </p>
+                    
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                            <div class="w-10 h-10 bg-[#F3ECE0] rounded-full flex items-center justify-center text-[#B89047] flex-shrink-0">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-kufi text-xs font-bold text-[#B89047]">تاريخ الزفاف</h4>
+                                <p class="text-stone-800 text-base font-medium">السبت، ٢٠ شباط (شهر ٢) سنة ٢٠٢٧</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                            <div class="w-10 h-10 bg-[#F3ECE0] rounded-full flex items-center justify-center text-[#B89047] flex-shrink-0">
+                                <i class="far fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-kufi text-xs font-bold text-[#B89047]">الوقت الفاخر</h4>
+                                <p class="text-stone-800 text-base font-medium">الرابعة عصراً (٤:٠٠ م)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                            <div class="w-10 h-10 bg-[#F3ECE0] rounded-full flex items-center justify-center text-[#B89047] flex-shrink-0">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-kufi text-xs font-bold text-[#B89047]">الوجهة الملكية</h4>
+                                <p class="text-stone-800 text-base font-medium">منتجع المدهش السياحي (قاعة مدهش)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Children Policy Note -->
+                    <div class="mt-6 p-4 bg-amber-50 border-l-4 border-[#B89047] rounded-r-xl shadow-sm flex items-center space-x-3 rtl:space-x-reverse">
+                        <div class="text-[#B89047] text-xl"><i class="fas fa-heart-broken"></i></div>
+                        <div>
+                            <h4 class="font-kufi text-xs font-bold text-[#B89047]">ملاحظة ملكية موقرة</h4>
+                            <p class="text-stone-600 text-xs mt-0.5">صغاركم محل حبنا، ولكن لضمان راحتكم وانسيابية الحفل الفاخر، نعتذر عن استقبال الأطفال. جنة الأطفال منازلهم.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Interactive Countdown Timer -->
+                <div class="bg-stone-900 text-[#FAF7F2] p-8 md:p-10 rounded-2xl shadow-2xl border border-[#B89047] relative overflow-hidden" data-aos="fade-left">
+                    <div class="absolute -top-12 -left-12 w-40 h-40 bg-[#B89047]/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-12 -right-12 w-40 h-40 bg-[#E6C687]/10 rounded-full blur-3xl"></div>
+
+                    <div class="relative text-center space-y-8 z-10">
+                        <span class="font-kufi text-[#E6C687] text-xs uppercase tracking-[0.2em]">العد التنازلي لليوم المنتظر</span>
+                        <h3 class="title-calligraphy text-2xl gold-text-gradient font-bold">كل ثانية تقربنا من الفرحة العظمى</h3>
+                        
+                        <!-- Clock Grids -->
+                        <div class="grid grid-cols-4 gap-4 pt-4">
+                            <!-- Days -->
+                            <div class="bg-stone-950/60 p-3 rounded-lg border border-[#B89047]/30 flex flex-col items-center">
+                                <span id="days" class="text-3xl font-bold gold-text-gradient">00</span>
+                                <span class="text-[10px] font-kufi text-stone-400 mt-1">أيام</span>
+                            </div>
+                            <!-- Hours -->
+                            <div class="bg-stone-950/60 p-3 rounded-lg border border-[#B89047]/30 flex flex-col items-center">
+                                <span id="hours" class="text-3xl font-bold gold-text-gradient">00</span>
+                                <span class="text-[10px] font-kufi text-stone-400 mt-1">ساعات</span>
+                            </div>
+                            <!-- Minutes -->
+                            <div class="bg-stone-950/60 p-3 rounded-lg border border-[#B89047]/30 flex flex-col items-center">
+                                <span id="minutes" class="text-3xl font-bold gold-text-gradient">00</span>
+                                <span class="text-[10px] font-kufi text-stone-400 mt-1">دقائق</span>
+                            </div>
+                            <!-- Seconds -->
+                            <div class="bg-stone-950/60 p-3 rounded-lg border border-[#B89047]/30 flex flex-col items-center">
+                                <span id="seconds" class="text-3xl font-bold gold-text-gradient">00</span>
+                                <span class="text-[10px] font-kufi text-stone-400 mt-1">ثوانٍ</span>
+                            </div>
+                        </div>
+
+                        <!-- Date Badge -->
+                        <div class="pt-6 border-t border-stone-800">
+                            <p class="font-kufi text-xs text-stone-400">تاريخ الحفل المسجّل:</p>
+                            <p class="text-lg text-[#E6C687] mt-1 font-semibold">20 - 02 - 2027</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECTION 3: THE ROYAL DESTINATION MAP -->
+        <section id="map-sec" class="w-full max-w-5xl px-6 py-16 text-center relative">
+            <div class="max-w-2xl mx-auto space-y-6 mb-12" data-aos="fade-up">
+                <span class="font-kufi text-[#B89047] text-xs uppercase tracking-widest block">خرائط ومواقع الوصول</span>
+                <h2 class="title-calligraphy text-4xl text-stone-900">موقع الاحتفال والبهجة</h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-[#B89047] to-[#E6C687] mx-auto"></div>
+                <p class="text-stone-600">
+                    نهتم جداً بتسهيل وصولكم الفاخر لقاعتنا المحاطة بالملوك، يمكنكم النقر على الخريطة التفاعلية بالأسفل أو الانتقال مباشرة لخرائط Google.
+                </p>
+            </div>
+
+            <!-- Custom Designed Luxury Map Card (Highly Interactive) -->
+            <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+                <div class="bg-white p-4 rounded-3xl shadow-2xl border border-[#B89047]/20 relative group">
+                    <!-- Illustrated abstract royal map graphic instead of static boring map -->
+                    <div class="w-full h-[350px] bg-stone-100 rounded-2xl relative overflow-hidden flex flex-col items-center justify-center text-center p-8 border border-stone-200">
+                        <!-- Abstract beautiful dynamic background rings -->
+                        <div class="absolute w-[400px] h-[400px] border border-[#B89047]/10 rounded-full animate-pulse"></div>
+                        <div class="absolute w-[250px] h-[250px] border border-[#B89047]/20 rounded-full"></div>
+                        
+                        <!-- Elegant Map Graphic Content -->
+                        <div class="z-10 space-y-6">
+                            <!-- Pulsing location gold pin -->
+                            <div class="pulsing-pin w-16 h-16 bg-[#B89047]/20 rounded-full mx-auto flex items-center justify-center">
+                                <div class="w-10 h-10 bg-gradient-to-tr from-[#B89047] to-[#E6C687] rounded-full flex items-center justify-center text-stone-900 shadow-md">
+                                    <i class="fas fa-map-marker-alt text-lg"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="title-calligraphy text-2xl font-bold text-stone-950">منتجع المدهش السياحي (قاعة مدهش)</h3>
+                                <p class="text-stone-500 font-kufi text-xs mt-1">بابل، شارع بغداد، مقابل محطة وقود بته</p>
+                            </div>
+                            <p class="text-stone-600 max-w-md mx-auto text-sm">
+                                "الصرح الاستثنائي الفاخر الذي سيحتضن ليلتنا المدهشة المليئة بالبهجة والمحبة"
+                            </p>
+                            
+                            <!-- Large Interactive Map Anchor -->
+                            <a href="https://maps.app.goo.gl/FVYZbiYP6iNYJgTn8?g_st=ic" target="_blank" class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-stone-900 text-[#FAF7F2] font-kufi text-xs py-3 px-8 rounded-full shadow-lg hover:bg-[#B89047] hover:text-stone-950 transition duration-300">
+                                <span>افتح الموقع عبر خرائط Google</span>
+                                <i class="fas fa-location-arrow"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 4: THE INTERACTIVE RSVP FORM (Sends directly to WhatsApp) -->
+        <section id="rsvp-sec" class="w-full max-w-4xl px-6 py-16 relative">
+            <div class="bg-[#F3ECE0]/50 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-[#B89047]/30 shadow-2xl relative">
+                <!-- Royal Corner Ornaments -->
+                <div class="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#B89047]"></div>
+                <div class="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#B89047]"></div>
+                
+                <div class="max-w-xl mx-auto text-center space-y-6 mb-10">
+                    <span class="font-kufi text-[#B89047] text-xs uppercase tracking-widest block">تأكيد حضور المحفل الملكي</span>
+                    <h2 class="title-calligraphy text-4xl text-stone-900">هل سنحظى بشرف حضوركم؟</h2>
+                    <p class="text-stone-600 text-sm">
+                        يرجى التكرم بتأكيد حضوركم الكريم قبل موعد الزفاف بملء البيانات أدناه ليتم إرسالها فوراً لوكيل الزفاف عبر الواتساب لتجهيز المقاعد والترحيبات الملكية تليق بمقامكم.
+                    </p>
+                </div>
+
+                <!-- RSVP Form -->
+                <form id="rsvp-form" onsubmit="sendRSVP(event)" class="max-w-lg mx-auto space-y-6">
+                    <!-- Guest Full Name Input -->
+                    <div class="space-y-2">
+                        <label for="guest-name" class="block font-kufi text-xs font-bold text-stone-700">الاسم الكريم / العائلة الراعية:</label>
+                        <input type="text" id="guest-name" required="" placeholder="يرجى كتابة الاسم الثلاثي أو اللقب الموقر" class="w-full bg-[#FAF7F2] border border-stone-300 focus:border-[#B89047] rounded-lg p-3 text-stone-900 placeholder-stone-400 outline-none transition shadow-inner">
+                    </div>
+
+                    <!-- Number of Companions -->
+                    <div class="space-y-2">
+                        <label for="guest-count" class="block font-kufi text-xs font-bold text-stone-700">عدد المرافقين بصحبتكم:</label>
+                        <select id="guest-count" class="w-full bg-[#FAF7F2] border border-stone-300 focus:border-[#B89047] rounded-lg p-3 text-stone-900 outline-none transition shadow-inner">
+                            <option value="شخص واحد">سأحضر بمفردي</option>
+                            <option value="شخصين">شخصين (+1 مرافق)</option>
+                            <option value="3 أشخاص">3 أشخاص (+2 مرافقين)</option>
+                            <option value="4 أشخاص">4 أشخاص (+3 مرافقين)</option>
+                            <option value="عائلة كاملة">عائلة كاملة وموقرة</option>
+                        </select>
+                    </div>
+
+                    <!-- Attendance Status -->
+                    <div class="space-y-2">
+                        <label class="block font-kufi text-xs font-bold text-stone-700">تأكيد الموقف بكل ود:</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer border-2 border-stone-200 rounded-lg p-4 flex items-center justify-center space-x-2 rtl:space-x-reverse hover:bg-white transition bg-white/40" id="label-accept">
+                                <input type="radio" name="attendance" value="بكل تأكيد وشغف سأحضر!" checked="" class="accent-[#B89047] h-4 w-4">
+                                <span class="font-kufi text-xs font-semibold text-emerald-800">أتشرف بالحضور</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-stone-200 rounded-lg p-4 flex items-center justify-center space-x-2 rtl:space-x-reverse hover:bg-white transition bg-white/40" id="label-decline">
+                                <input type="radio" name="attendance" value="أعتذر لظروف قاهرة وأتمنى لكما السعادة." class="accent-[#B89047] h-4 w-4">
+                                <span class="font-kufi text-xs font-semibold text-rose-800">أعتذر ببالغ الأسف</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Special Congratulatory Note -->
+                    <div class="space-y-2">
+                        <label for="guest-message" class="block font-kufi text-xs font-bold text-stone-700">برقية تهنئة أو كلمة للعروسين:</label>
+                        <textarea id="guest-message" rows="3" placeholder="اكتب هنا تمنياتك القلبية الصادقة لروان واحمد..." class="w-full bg-[#FAF7F2] border border-stone-300 focus:border-[#B89047] rounded-lg p-3 text-stone-900 placeholder-stone-400 outline-none transition shadow-inner"></textarea>
+                    </div>
+
+                    <!-- Submit RSVP Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#B89047] to-[#E6C687] text-stone-950 font-kufi font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition duration-300 flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>إرسال التأكيد للعروسين عبر WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- FOOTER: LUXURY CLOSING -->
+        <footer class="w-full max-w-3xl mt-20 text-center space-y-6 px-6">
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-[#B89047] to-transparent"></div>
+            <div class="title-calligraphy text-3xl gold-text-gradient font-bold">روان & &amp; احمد</div>
+            <p class="text-stone-500 font-kufi text-xs">نحن في انتظار مجيئكم بشوق لنسجل معاً ليلة تظل للتاريخ محفورة.</p>
+            <p class="text-stone-400 font-kufi text-[10px] tracking-widest pt-8">صمم هذا المعلم الفاخر خصيصاً كتحفة إلكترونية تفاعلية ٢٠٢٧ ©</p>
+        </footer>
+
+    </div>
+
+    <!-- YouTube IFrame API Loader Script -->
+    <script>
+        // Load YouTube API asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var isMusicPlaying = false;
+
+        // Callback function when YouTube API is ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-audio-player', {
+                height: '0',
+                width: '0',
+                videoId: 'akcJI2JYryA', // The specified YouTube Song ID
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'akcJI2JYryA' // Needed to make looping work reliably
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player loaded successfully and is ready
+            console.log("YouTube Player Loaded Successfully");
+        }
+
+        function onPlayerStateChange(event) {
+            // Keep status synchronized
+            if (event.data == YT.PlayerState.PLAYING) {
+                isMusicPlaying = true;
+                document.getElementById('music-vinyl').classList.add('music-disc-active');
+            } else {
+                isMusicPlaying = false;
+                document.getElementById('music-vinyl').classList.remove('music-disc-active');
+            }
+        }
+
+        function toggleMusic() {
+            if (!player) return;
+            if (isMusicPlaying) {
+                player.pauseVideo();
+                isMusicPlaying = false;
+                showNotification("تم إيقاف معزوفة الحب مؤقتاً 🎧");
+            } else {
+                player.playVideo();
+                isMusicPlaying = true;
+                showNotification("تشتغل معزوفة العمر الفاخرة الآن... 🎻🎶");
+            }
+        }
+    </script>
+
+    <!-- Interactive Canvas Particles Logic & Main Control -->
+    <script>
+        // Initialize AOS (Animate on Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+
+        // Wax Seal Open Animation Sequence
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const seal = document.querySelector('.wax-seal');
+            
+            // 1. Break Seal effect
+            seal.style.transform = 'translate(-50%, -50%) scale(0.1) rotate(45deg)';
+            seal.style.opacity = '0';
+            
+            setTimeout(() => {
+                // 2. Open Flap
+                envelope.classList.add('open');
+                
+                setTimeout(() => {
+                    // 3. Fade Out Container and Reveal the Luxury Page
+                    document.getElementById('envelope-container').classList.add('transition-all', 'duration-1000', 'opacity-0', 'pointer-events-none');
+                    document.getElementById('main-content').classList.remove('hidden');
+                    document.getElementById('main-content').classList.add('animate-fade-in');
+                    
+                    // Attempt to auto play the music (requires user gesture - we are currently in click event so it will work!)
+                    if (player) {
+                        player.playVideo();
+                        isMusicPlaying = true;
+                        document.getElementById('music-vinyl').classList.add('music-disc-active');
+                        showNotification("مرحباً بكم في زفاف روان واحمد... 💖🎶");
+                    }
+                    
+                    // Force particles update
+                    resizeCanvas();
+                }, 1000);
+
+            }, 500);
+        }
+
+        // Elegant Toast notification system
+        function showNotification(text) {
+            const toast = document.getElementById('custom-toast');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = text;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(10px)';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(-10px)';
+            }, 4000);
+        }
+
+        // Elegant Interactive Gold Dust Canvas System
+        const canvas = document.getElementById('dustCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        });
+
+        window.addEventListener('touchmove', function(event) {
+            if (event.touches.length > 0) {
+                mouse.x = event.touches[0].clientX;
+                mouse.y = event.touches[0].clientY;
+            }
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.6 + 0.2; // drifting down
+                this.density = Math.random() * 30 + 10;
+                this.opacity = Math.random() * 0.7 + 0.1;
+                // Luxury gold color hues
+                const colors = ['#8A6421', '#D1B464', '#FDF1A9', '#FAF7F2'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+                if (this.x > canvas.width || this.x < 0) {
+                    this.x = Math.random() * canvas.width;
+                }
+
+                // Interactive drift on mouse interaction
+                if (mouse.x && mouse.y) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let maxDistance = 120;
+                        let force = (maxDistance - distance) / maxDistance;
+                        let directionX = forceDirectionX * force * this.density * 0.2;
+                        let directionY = forceDirectionY * force * this.density * 0.2;
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = '#FDF1A9';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            const numberOfParticles = Math.min(60, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+
+        // ROYAL COUNTDOWN CLOCK ENGINE
+        // Wedding Date: Feb 20, 2027 16:00:00 AST
+        const targetDate = new Date("Feb 20, 2027 16:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        // INTERACTIVE RSVP & WHATSAPP ENGINE
+        function sendRSVP(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('guest-name').value.trim();
+            const count = document.getElementById('guest-count').value;
+            const message = document.getElementById('guest-message').value.trim();
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+
+            if (!name) {
+                showNotification("لطفاً أدخل اسمك الكريم لتأكيد الحضور.");
+                return;
+            }
+
+            const rsvpNumber = "+9647766153831"; // Groom / Bride RSVP handler phone number
+            
+            // Format a beautifully worded royal message
+            let whatsappText = `🌟 *تأكيد حضور حفل زفاف روان واحمد* 🌟\n\n`;
+            whatsappText += `👤 *الاسم الكريم:* ${name}\n`;
+            whatsappText += `👥 *عدد المرافقين:* ${count}\n`;
+            whatsappText += `💌 *موقف الحضور:* ${attendance}\n`;
+            
+            if (message) {
+                whatsappText += `✨ *برقية تهنئة:* "${message}"\n`;
+            }
+            
+            whatsappText += `\n_تم إرسال هذا التأكيد الملكي عبر بطاقة الزفاف الإلكترونية الرسمية_ ✨`;
+
+            // Open WhatsApp link
+            const url = `https://api.whatsapp.com/send?phone=${rsvpNumber}&text=${encodeURIComponent(whatsappText)}`;
+            window.open(url, '_blank');
+
+            showNotification("تم تجهيز برقية التأكيد المنسقة وفتح تطبيق WhatsApp! 🌟");
+        }
+    </script>
+</body>
+</html>
